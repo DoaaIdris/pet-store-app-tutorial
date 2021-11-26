@@ -4,11 +4,29 @@ import PetsOrderContext from "../../../context/petsOrderContext";
 import { OrderItem } from "../../OrderItem";
 import { Button } from "../../Button";
 
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { useHistory } from "react-router";
+
 export const ShoppingCartPage = () => {
 
   const[order, setOrder] =useState([]);
 
+  const history = useHistory();
+
   const globalState = useContext(PetsOrderContext);
+
+
+  useEffect(
+    () => {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        console.log(user)
+        if(!user){
+          history.push('/login');
+        }
+      })
+    }, []
+  )
 
   useEffect(
     () => {
