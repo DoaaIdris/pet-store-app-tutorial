@@ -20,6 +20,9 @@ export const Navbar = () => {
                 <lii>
                     <Logout></Logout>
                 </lii>
+                <li>
+                    <NavLink activeClassName="nav-selected" to="/new"> Add New Pet</NavLink>
+                </li>
             </ul>
         </nav>
     )
